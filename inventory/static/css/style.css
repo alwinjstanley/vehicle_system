@@ -1,0 +1,166 @@
+/* --------------------------------------------------
+   ANIMATED GRADIENT BACKGROUND
+-------------------------------------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #fff; /* white text works better on gradient */
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #12c2e9, #f64f59);
+    background-size: 400% 400%;
+    animation: gradientBG 18s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* --------------------------------------------------
+   GLASSMORPHISM GLOBAL STYLES
+-------------------------------------------------- */
+.glass-card,
+.glass,
+.glass-nav {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2) !important;
+    color: #fff;
+}
+
+/* Make bootstrap cards transparent */
+.card {
+    background: transparent !important;
+    border: none !important;
+    color: #fff;
+}
+
+/* Make bootstrap table background transparent */
+table,
+.table {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.table thead {
+    background: rgba(255,255,255,0.25) !important;
+}
+
+/* Make table borders glass-like */
+.table-bordered > :not(caption) > * > * {
+    border-color: rgba(255,255,255,0.3) !important;
+}
+
+
+/* --------------------------------------------------
+   NAVBAR (Glass Effect)
+-------------------------------------------------- */
+.glass-nav {
+    padding: 12px 0;
+}
+
+.navbar a.nav-link,
+.navbar-brand {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+
+/* --------------------------------------------------
+   BUTTONS (Modern Glow)
+-------------------------------------------------- */
+.btn,
+button {
+    border-radius: 10px !important;
+    padding: 10px 16px;
+    font-weight: 600;
+    border: none;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    transition: 0.2s ease;
+}
+
+.btn:hover,
+button:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+
+/* --------------------------------------------------
+   FORMS (Glass Inputs)
+-------------------------------------------------- */
+.form-control,
+.form-select {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    padding: 10px 14px !important;
+    color: #fff !important;
+}
+
+.form-control::placeholder {
+    color: #eee !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.35) !important;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4) !important;
+}
+
+
+/* --------------------------------------------------
+   VEHICLE LIST CARDS
+-------------------------------------------------- */
+.vehicle-card {
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.vehicle-card h3 {
+    margin-bottom: 8px;
+}
+
+.available {
+    color: #8aff9d;
+    font-weight: bold;
+}
+
+.unavailable {
+    color: #ff6a6a;
+    font-weight: bold;
+}
+
+
+/* --------------------------------------------------
+   BOOKING TABLE
+-------------------------------------------------- */
+.bookings-table {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------
+   MISC
+-------------------------------------------------- */
+.text-white {
+    color: #fff !important;
+}
+
+.shadow-soft {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+

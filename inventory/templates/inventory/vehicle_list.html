@@ -1,0 +1,87 @@
+{% extends "inventory/base.html" %}
+{% block title %}Vehicles{% endblock %}
+{% block content %}
+
+
+<h2 class="fw-bold mb-3">Vehicles</h2>
+
+<!-- Filters -->
+<form method="get" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <input type="text" name="brand" class="form-control" placeholder="Brand"
+           value="{{ request.GET.brand }}">
+  </div>
+
+  <div class="col-md-3">
+    <select name="fuel_type" class="form-select">
+      <option value="">All Fuel Types</option>
+      <option value="Petrol" {% if request.GET.fuel_type == 'Petrol' %}selected{% endif %}>Petrol</option>
+      <option value="Diesel" {% if request.GET.fuel_type == 'Diesel' %}selected{% endif %}>Diesel</option>
+      <option value="Electric" {% if request.GET.fuel_type == 'Electric' %}selected{% endif %}>Electric</option>
+      <option value="Hybrid" {% if request.GET.fuel_type == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <select name="is_available" class="form-select">
+      <option value="">Availability</option>
+      <option value="true" {% if request.GET.is_available == 'true' %}selected{% endif %}>Available</option>
+      <option value="false" {% if request.GET.is_available == 'false' %}selected{% endif %}>Booked</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <button class="btn btn-danger w-100">Filter</button>
+  </div>
+</form>
+
+<!-- Cards Grid -->
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for v in vehicles %}
+    <div class="col">
+      <div class="card shadow-sm h-100 glass-card">
+        <div class="card-body">
+
+          <h5 class="card-title fw-bold">{{ v.brand }} {{ v.name }}</h5>
+
+          <p class="card-text mb-1"><strong>Year:</strong> {{ v.year }}</p>
+          <p class="card-text mb-1"><strong>Fuel:</strong> {{ v.fuel_type }}</p>
+          <p class="card-text mb-1"><strong>Price/day:</strong> ₹{{ v.price_per_day }}</p>
+
+          <p class="mt-2">
+            Status:
+            {% if v.is_available %}
+              <span class="badge bg-success">Available</span>
+            {% else %}
+              <span class="badge bg-danger">Booked</span>
+            {% endif %}
+          </p>
+
+        </div>
+
+        <div class="card-footer bg-white">
+          <a href="{% url 'inventory:vehicle_detail' v.pk %}"
+             class="btn btn-primary w-100">View & Book</a>
+        </div>
+      </div>
+    </div>
+
+  {% empty %}
+    <p>No vehicles found.</p>
+  {% endfor %}
+
+</div>
+<!-- API Quick Access -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h4 class="fw-bold mb-3">API Quick Access</h4>
+    <div class="list-group">
+      <a href="/api/" class="list-group-item list-group-item-action">🔗 API Root ( /api/ )</a>
+      <a href="/api/vehicles/" class="list-group-item list-group-item-action">🚗 Vehicles API (GET, POST)</a>
+      <a href="/api/bookings/" class="list-group-item list-group-item-action">📘 Bookings API (GET, POST)</a>
+      <a href="/admin/" class="list-group-item list-group-item-action">🔐 Admin Panel</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
